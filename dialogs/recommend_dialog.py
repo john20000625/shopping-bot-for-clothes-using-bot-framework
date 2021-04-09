@@ -113,7 +113,10 @@ class RecommendDialog(CancelAndHelpDialog):
         product_details.season = season_cal(step_context.result)
 
         if product_details.typ is None:
-            message_text = "这件衣服属于什么类型呢（上衣或连衣裙）？"
+            if product_details.sex['sex-female'] == 10:
+                message_text = "这件衣服属于什么类型呢（上衣或连衣裙）？"
+            else:
+                message_text = "这件衣服属于什么类型呢（上衣或T恤）？"
             prompt_message = MessageFactory.text(
                 message_text, message_text, InputHints.expecting_input
             )
